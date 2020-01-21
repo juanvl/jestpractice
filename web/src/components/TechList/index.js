@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function TechList() {
   const [techs, setTechs] = useState([]);
   const [newTech, setNewTech] = useState('');
 
+  useEffect(() => {
+    const storageTechs = localStorage.getItem('techs');
+
+    if (storageTechs) {
+      setTechs(JSON.parse(storageTechs));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('techs', JSON.stringify(techs));
+  }, [techs])
+
   function handleAddTech() {
     setTechs([...techs, newTech]);
-    setNewTech('')
+    setNewTech('');
   }
 
   return (
@@ -19,12 +31,13 @@ export default function TechList() {
 
       <label htmlFor="tech">Tech</label>
       <input
+        type="text"
         id="tech"
         value={newTech}
         onChange={e => setNewTech(e.target.value)}
       />
 
-      <button onClick={handleAddTech}>
+      <button type="button" onClick={handleAddTech}>
         Adicionar
       </button>
     </form>

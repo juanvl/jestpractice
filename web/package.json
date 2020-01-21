@@ -29,6 +29,7 @@
     "eslint-plugin-react": "latest",
     "eslint-plugin-react-hooks": "latest",
     "eslint-plugin-react-native": "latest",
+    "jest-localstorage-mock": "^2.4.0",
     "prettier": "latest",
     "react-app-rewired": "latest"
   },
@@ -43,7 +44,8 @@
       "**/__tests__/**/*.test.js"
     ],
     "setupFilesAfterEnv": [
-      "@testing-library/jest-dom/extend-expect"
+      "@testing-library/jest-dom/extend-expect",
+      "jest-localstorage-mock"
     ],
     "moduleNameMapper": {
       "^~/(.*)": "<rootDir>/src/$1"
