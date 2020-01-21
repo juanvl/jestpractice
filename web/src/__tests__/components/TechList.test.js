@@ -7,11 +7,11 @@ describe('TechList component', () => {
   it('should be able to add new tech', () => {
     const { getByText, getByTestId, debug } = render(<TechList />);
 
-    debug();
+    // debug();
 
     fireEvent.click(getByText('Adicionar'));
 
-    debug();
+    // debug();
 
     expect(getByTestId('tech-list')).toContainElement(getByText('Node.js'));
   });
